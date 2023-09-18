@@ -5,10 +5,10 @@
 QUIC                                                          J. Iyengar
 Internet-Draft                                                    Fastly
 Intended status: Standards Track                                I. Swett
-Expires: 12 March 2024                                            Google
+Expires: 21 March 2024                                            Google
                                                             M. Kühlewind
                                                                 Ericsson
-                                                        9 September 2023
+                                                       18 September 2023
 
 
                      QUIC Acknowledgement Frequency
@@ -44,7 +44,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 12 March 2024.
+   This Internet-Draft will expire on 21 March 2024.
 
 Copyright Notice
 
@@ -167,7 +167,7 @@ Table of Contents
    document by sending the following transport parameter (Section 7.2 of
    [QUIC-TRANSPORT]):
 
-   min_ack_delay (0xff04de1a):  A variable-length integer representing
+   min_ack_delay (0xff04de1b):  A variable-length integer representing
       the minimum amount of time in microseconds by which the endpoint
       that is sending this value is able to delay an acknowledgement.
       This limit could be based on the receiver's clock or timer
@@ -580,7 +580,7 @@ Table of Contents
              +============+=================+===============+
              | Value      | Parameter Name. | Specification |
              +============+=================+===============+
-             | 0xff04de1a | min_ack_delay   | Section 3     |
+             | 0xff04de1b | min_ack_delay   | Section 3     |
              +------------+-----------------+---------------+
 
                    Table 1: Addition to QUIC Transport
