@@ -5,10 +5,10 @@
 QUIC                                                          J. Iyengar
 Internet-Draft                                                    Fastly
 Intended status: Standards Track                                I. Swett
-Expires: 18 April 2024                                            Google
+Expires: 25 April 2024                                            Google
                                                             M. Kühlewind
                                                                 Ericsson
-                                                         16 October 2023
+                                                         23 October 2023
 
 
                      QUIC Acknowledgement Frequency
@@ -44,7 +44,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 18 April 2024.
+   This Internet-Draft will expire on 25 April 2024.
 
 Copyright Notice
 
@@ -578,9 +578,9 @@ Table of Contents
 
 10.1.  QUIC Transport Parameter
 
-   The following entry in Table 1 has been proviosnally added to the
-   "QUIC Transport Parameters" registry under the "QUIC Protocol"
-   heading.
+   The following entry in Table 1 has been requested to be provisionally
+   added to the "QUIC Transport Parameters" registry under the "QUIC
+   Protocol" heading.
 
              +============+=================+===============+
              | Value      | Parameter Name. | Specification |
@@ -597,8 +597,8 @@ Table of Contents
 
 10.2.  QUIC Frame Types
 
-   The following frame types have provionsally be added to the "QUIC
-   Frame Types" registry under the "QUIC Protocol" heading.
+   The following frame types have requested to be provisionally added to
+   the "QUIC Frame Types" registry under the "QUIC Protocol" heading.
 
                  +=======+===============+===============+
                  | Value | Frame Name    | Specification |
