@@ -12,23 +12,23 @@
        This document describes a QUIC extension for an endpoint to control its peer's
 delaying of acknowledgements. 
     " name="description">
-<meta content="xml2rfc 3.18.0" name="generator">
+<meta content="xml2rfc 3.18.2" name="generator">
 <meta content="draft-ietf-quic-ack-frequency-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.18.0
-    Python 3.11.5
+  xml2rfc 3.18.2
+    Python 3.11.6
     ConfigArgParse 1.5.3
     google-i18n-address 3.1.0
     intervaltree 3.1.0
     Jinja2 3.1.2
     lxml 4.9.3
-    platformdirs 3.10.0
+    platformdirs 3.11.0
     pycountry 22.3.5
     PyYAML 6.0
     requests 2.31.0
     setuptools 67.7.2
     six 1.16.0
-    wcwidth 0.2.6
+    wcwidth 0.2.8
 -->
 <link href="draft-ietf-quic-ack-frequency.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
@@ -651,7 +651,7 @@ sub, sup {
 }
 #toc nav li {
   line-height: 1.3em;
-  margin: 0.75em 0;
+  margin: 2px 0;
   padding-left: 1.2em;
   text-indent: -1.2em;
 }
@@ -744,7 +744,7 @@ hr.addr {
     z-index: 2;
     top: 0;
     right: 0;
-    padding: 0;
+    padding: 1px 0 0 0;
     margin: 0;
     border-bottom: 1px solid #ccc;
     opacity: 0.6;
@@ -868,16 +868,13 @@ hr.addr {
     border-top: none;
     padding-top: 0;
   }
-  figure, pre {
+  figure, pre, .vcard {
     page-break-inside: avoid;
-  }
-  figure {
-    overflow: scroll;
   }
   h1, h2, h3, h4, h5, h6 {
     page-break-after: avoid;
   }
-  h2+*, h3+*, h4+*, h5+*, h6+* {
+  :is(h2, h3, h4, h5, h6)+*, dd {
     page-break-before: avoid;
   }
   pre {
@@ -890,6 +887,9 @@ hr.addr {
   }
   td {
     border-top: 1px solid #ddd;
+  }
+  .toplink {
+    display: none;
   }
 }
 
@@ -991,28 +991,6 @@ address div.right {
   text-align: right;
 }
 
-/* Give the table caption label the same styling as the figcaption */
-
-@media print {
-  .toplink {
-    display: none;
-  }
-
-  /* avoid overwriting the top border line with the ToC header */
-  #toc {
-    padding-top: 1px;
-  }
-
-  /* Avoid page breaks inside dl and author address entries */
-  dd {
-    page-break-before: avoid;
-  }
-  .vcard {
-    page-break-inside: avoid;
-  }
-
-}
-
 /* Dark mode. */
 @media (prefers-color-scheme: dark) {
 :root {
@@ -1049,11 +1027,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">QUIC Acknowledgement Frequency</td>
-<td class="right">September 2023</td>
+<td class="right">October 2023</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Iyengar, et al.</td>
-<td class="center">Expires 12 March 2024</td>
+<td class="center">Expires 25 April 2024</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1066,12 +1044,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-quic-ack-frequency-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2023-09-09" class="published">9 September 2023</time>
+<time datetime="2023-10-23" class="published">23 October 2023</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2024-03-12">12 March 2024</time></dd>
+<dd class="expires"><time datetime="2024-04-25">25 April 2024</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1125,7 +1103,7 @@ code and issues list for this draft can be found at
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 12 March 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 25 April 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1229,6 +1207,14 @@ code and issues list for this draft can be found at
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10">
             <p id="section-toc.1-1.10.1"><a href="#section-10" class="auto internal xref">10</a>. <a href="#name-iana-considerations" class="internal xref">IANA Considerations</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10.2.1">
+                <p id="section-toc.1-1.10.2.1.1"><a href="#section-10.1" class="auto internal xref">10.1</a>.  <a href="#name-quic-transport-parameter" class="internal xref">QUIC Transport Parameter</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10.2.2">
+                <p id="section-toc.1-1.10.2.2.1"><a href="#section-10.2" class="auto internal xref">10.2</a>.  <a href="#name-quic-frame-types" class="internal xref">QUIC Frame Types</a></p>
+</li>
+            </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11">
             <p id="section-toc.1-1.11.1"><a href="#section-11" class="auto internal xref">11</a>. <a href="#name-references" class="internal xref">References</a></p>
@@ -1293,24 +1279,28 @@ sender, and CPU utilization at both a data sender and a data receiver.<a href="#
 <p id="section-2-2">Reducing the frequency of acknowledgements can improve connection and
 endpoint performance in the following ways:<a href="#section-2-2" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-2-3.1">Sending UDP packets can be very CPU intensive on some platforms. Reducing
+<li class="normal" id="section-2-3.1">
+          <p id="section-2-3.1.1">Sending UDP packets can be very CPU intensive on some platforms. Reducing
 the number of packets that only contain acknowledgements reduces the CPU
 consumed at a data receiver. Experience shows that this reduction can be
-critical for high bandwidth connections.<a href="#section-2-3.1" class="pilcrow">¶</a>
+critical for high bandwidth connections.<a href="#section-2-3.1.1" class="pilcrow">¶</a></p>
 </li>
-        <li class="normal" id="section-2-3.2">Similarly, receiving and processing UDP packets can also be CPU intensive, and
-reducing acknowledgement frequency reduces this cost at a data sender.<a href="#section-2-3.2" class="pilcrow">¶</a>
+        <li class="normal" id="section-2-3.2">
+          <p id="section-2-3.2.1">Similarly, receiving and processing UDP packets can also be CPU intensive, and
+reducing acknowledgement frequency reduces this cost at a data sender.<a href="#section-2-3.2.1" class="pilcrow">¶</a></p>
 </li>
-        <li class="normal" id="section-2-3.3">For asymmetric link technologies, such as DOCSIS, LTE, and satellite,
+        <li class="normal" id="section-2-3.3">
+          <p id="section-2-3.3.1">For asymmetric link technologies, such as DOCSIS, LTE, and satellite,
 connection throughput in the forward path can become constrained
 when the reverse path is filled by acknowledgment packets <span>[<a href="#RFC3449" class="cite xref">RFC3449</a>]</span>.
 When traversing such links, reducing the number of acknowledgments can achieve
 higher connection throughput, lower the impact on other flows or optimise the
-overall use of transmission resources <span>[<a href="#Cus22" class="cite xref">Cus22</a>]</span>.<a href="#section-2-3.3" class="pilcrow">¶</a>
+overall use of transmission resources <span>[<a href="#Cus22" class="cite xref">Cus22</a>]</span>.<a href="#section-2-3.3.1" class="pilcrow">¶</a></p>
 </li>
-        <li class="normal" id="section-2-3.4">The rate of acknowledgment packets can reduce link efficiency, including
+        <li class="normal" id="section-2-3.4">
+          <p id="section-2-3.4.1">The rate of acknowledgment packets can reduce link efficiency, including
 transmission opportunities or battery life, as well as transmission
-opportunities available to other flows sharing the same link.<a href="#section-2-3.4" class="pilcrow">¶</a>
+opportunities available to other flows sharing the same link.<a href="#section-2-3.4.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 <p id="section-2-4">As discussed in <a href="#implementation" class="auto internal xref">Section 8</a> however, there can be undesirable consequences
@@ -1333,7 +1323,7 @@ extension provides a mechanism to solve this problem.<a href="#section-2-5" clas
 <p id="section-3-1">Endpoints advertise their support of the extension described in this document by
 sending the following transport parameter (<span><a href="https://rfc-editor.org/rfc/rfc9000#section-7.2" class="relref">Section 7.2</a> of [<a href="#QUIC-TRANSPORT" class="cite xref">QUIC-TRANSPORT</a>]</span>):<a href="#section-3-1" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlParallel" id="section-3-2">
-        <dt id="section-3-2.1">min_ack_delay (0xff04de1a):</dt>
+        <dt id="section-3-2.1">min_ack_delay (0xff04de1b):</dt>
         <dd style="margin-left: 1.5em" id="section-3-2.2">
           <p id="section-3-2.2.1">A variable-length integer representing the minimum amount of time in
 microseconds by which the endpoint that is sending this value is able to
@@ -1468,7 +1458,7 @@ endpoint is under heavy load.<a href="#section-5-3" class="pilcrow">¶</a></p>
 <div class="alignLeft art-text artwork" id="section-5-4">
 <pre>
 IMMEDIATE_ACK Frame {
-  Type (i) = 0xac,
+  Type (i) = 0x1f,
 }
 </pre><a href="#section-5-4" class="pilcrow">¶</a>
 </div>
@@ -1485,11 +1475,13 @@ specified in <span><a href="https://rfc-editor.org/rfc/rfc9000#section-13.2.1" c
 and <code>Ack-Eliciting Threshold</code> values (<a href="#ack-frequency-frame" class="auto internal xref">Section 4</a>), the endpoint sends an
 acknowledgement when one of the following conditions are met:<a href="#section-6-2" class="pilcrow">¶</a></p>
 <ul class="normal">
-<li class="normal" id="section-6-3.1">Since the last acknowledgement was sent, the number of received ack-eliciting
-packets is greater than the <code>Ack-Eliciting Threshold</code>.<a href="#section-6-3.1" class="pilcrow">¶</a>
+<li class="normal" id="section-6-3.1">
+          <p id="section-6-3.1.1">Since the last acknowledgement was sent, the number of received ack-eliciting
+packets is greater than the <code>Ack-Eliciting Threshold</code>.<a href="#section-6-3.1.1" class="pilcrow">¶</a></p>
 </li>
-        <li class="normal" id="section-6-3.2">Since the last acknowledgement was sent, <code>max_ack_delay</code> amount of time has
-passed.<a href="#section-6-3.2" class="pilcrow">¶</a>
+        <li class="normal" id="section-6-3.2">
+          <p id="section-6-3.2.1">Since the last acknowledgement was sent, <code>max_ack_delay</code> amount of time has
+passed.<a href="#section-6-3.2.1" class="pilcrow">¶</a></p>
 </li>
       </ul>
 <p id="section-6-4"><a href="#out-of-order" class="auto internal xref">Section 6.2</a>, <a href="#congestion" class="auto internal xref">Section 6.4</a>, and <a href="#batch" class="auto internal xref">Section 6.5</a> describe exceptions to this
@@ -1812,64 +1804,82 @@ more frequently than the receiver considers safe based on its resource constrain
 extension described in this document and two new frame types to registered
 by IANQ in the respective "QUIC Protocol" registries under
 <a href="https://www.iana.org/assignments/quic/quic.xhtml">https://www.iana.org/assignments/quic/quic.xhtml</a>.<a href="#section-10-1" class="pilcrow">¶</a></p>
-<p id="section-10-2">The following entry in <a href="#transport-parameters" class="auto internal xref">Table 1</a> should be added to
-the "QUIC Transport Parameters" registry under the "QUIC Protocol" heading.<a href="#section-10-2" class="pilcrow">¶</a></p>
+<div id="quic-transport-parameter">
+<section id="section-10.1">
+        <h3 id="name-quic-transport-parameter">
+<a href="#section-10.1" class="section-number selfRef">10.1. </a><a href="#name-quic-transport-parameter" class="section-name selfRef">QUIC Transport Parameter</a>
+        </h3>
+<p id="section-10.1-1">The following entry in <a href="#transport-parameters" class="auto internal xref">Table 1</a> has been requested to be provisionally added to
+the "QUIC Transport Parameters" registry under the "QUIC Protocol" heading.<a href="#section-10.1-1" class="pilcrow">¶</a></p>
 <span id="name-addition-to-quic-transport-"></span><div id="transport-parameters">
 <table class="center" id="table-1">
-        <caption>
+          <caption>
 <a href="#table-1" class="selfRef">Table 1</a>:
 <a href="#name-addition-to-quic-transport-" class="selfRef">Addition to QUIC Transport Parameters Entries</a>
-        </caption>
+          </caption>
 <thead>
-          <tr>
-            <th class="text-left" rowspan="1" colspan="1">Value</th>
-            <th class="text-left" rowspan="1" colspan="1">Parameter Name.</th>
-            <th class="text-left" rowspan="1" colspan="1">Specification</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="text-left" rowspan="1" colspan="1">0xff04de1a</td>
-            <td class="text-left" rowspan="1" colspan="1">min_ack_delay</td>
-            <td class="text-left" rowspan="1" colspan="1">
-              <a href="#nego" class="auto internal xref">Section 3</a>
+            <tr>
+              <th class="text-left" rowspan="1" colspan="1">Value</th>
+              <th class="text-left" rowspan="1" colspan="1">Parameter Name.</th>
+              <th class="text-left" rowspan="1" colspan="1">Specification</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-left" rowspan="1" colspan="1">0xff04de1b</td>
+              <td class="text-left" rowspan="1" colspan="1">min_ack_delay</td>
+              <td class="text-left" rowspan="1" colspan="1">
+                <a href="#nego" class="auto internal xref">Section 3</a>
 </td>
-          </tr>
-        </tbody>
-      </table>
+            </tr>
+          </tbody>
+        </table>
 </div>
-<p id="section-10-4">The following frame types should be added to the "QUIC Frame Types"
-registry under the "QUIC Protocol" heading.<a href="#section-10-4" class="pilcrow">¶</a></p>
+<p id="section-10.1-3">When this document is approved, IANA is requested to assign a permanent allocation
+of a codepoint in the 0-63 range to replace the provisional codepoint described above.<a href="#section-10.1-3" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="quic-frame-types">
+<section id="section-10.2">
+        <h3 id="name-quic-frame-types">
+<a href="#section-10.2" class="section-number selfRef">10.2. </a><a href="#name-quic-frame-types" class="section-name selfRef">QUIC Frame Types</a>
+        </h3>
+<p id="section-10.2-1">The following frame types have requested to be provisionally added to the "QUIC Frame Types"
+registry under the "QUIC Protocol" heading.<a href="#section-10.2-1" class="pilcrow">¶</a></p>
 <span id="name-addition-to-quic-frame-type"></span><div id="frame-types">
 <table class="center" id="table-2">
-        <caption>
+          <caption>
 <a href="#table-2" class="selfRef">Table 2</a>:
 <a href="#name-addition-to-quic-frame-type" class="selfRef">Addition to QUIC Frame Types Entries</a>
-        </caption>
+          </caption>
 <thead>
-          <tr>
-            <th class="text-left" rowspan="1" colspan="1">Value</th>
-            <th class="text-left" rowspan="1" colspan="1">Frame Name</th>
-            <th class="text-left" rowspan="1" colspan="1">Specification</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="text-left" rowspan="1" colspan="1">0xaf</td>
-            <td class="text-left" rowspan="1" colspan="1">ACK_FREQUENCY</td>
-            <td class="text-left" rowspan="1" colspan="1">
-              <a href="#ack-frequency-frame" class="auto internal xref">Section 4</a>
+            <tr>
+              <th class="text-left" rowspan="1" colspan="1">Value</th>
+              <th class="text-left" rowspan="1" colspan="1">Frame Name</th>
+              <th class="text-left" rowspan="1" colspan="1">Specification</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-left" rowspan="1" colspan="1">0xaf</td>
+              <td class="text-left" rowspan="1" colspan="1">ACK_FREQUENCY</td>
+              <td class="text-left" rowspan="1" colspan="1">
+                <a href="#ack-frequency-frame" class="auto internal xref">Section 4</a>
 </td>
-          </tr>
-          <tr>
-            <td class="text-left" rowspan="1" colspan="1">0xac</td>
-            <td class="text-left" rowspan="1" colspan="1">IMMEDIATE_ACK</td>
-            <td class="text-left" rowspan="1" colspan="1">
-              <a href="#immediate-ack-frame" class="auto internal xref">Section 5</a>
+            </tr>
+            <tr>
+              <td class="text-left" rowspan="1" colspan="1">0x1f</td>
+              <td class="text-left" rowspan="1" colspan="1">IMMEDIATE_ACK</td>
+              <td class="text-left" rowspan="1" colspan="1">
+                <a href="#immediate-ack-frame" class="auto internal xref">Section 5</a>
 </td>
-          </tr>
-        </tbody>
-      </table>
+            </tr>
+          </tbody>
+        </table>
+</div>
+<p id="section-10.2-3">When this document is approved, IANA is requested to change the registration to
+a permanent allocation of these frame types with the values described above.<a href="#section-10.2-3" class="pilcrow">¶</a></p>
+</section>
 </div>
 </section>
 </div>
@@ -1877,6 +1887,7 @@ registry under the "QUIC Protocol" heading.<a href="#section-10-4" class="pilcro
       <h2 id="name-references">
 <a href="#section-11" class="section-number selfRef">11. </a><a href="#name-references" class="section-name selfRef">References</a>
       </h2>
+<div id="sec-normative-references">
 <section id="section-11.1">
         <h3 id="name-normative-references">
 <a href="#section-11.1" class="section-number selfRef">11.1. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
@@ -1900,6 +1911,8 @@ registry under the "QUIC Protocol" heading.<a href="#section-10-4" class="pilcro
 <dd class="break"></dd>
 </dl>
 </section>
+</div>
+<div id="sec-informative-references">
 <section id="section-11.2">
         <h3 id="name-informative-references">
 <a href="#section-11.2" class="section-number selfRef">11.2. </a><a href="#name-informative-references" class="section-name selfRef">Informative References</a>
@@ -1927,6 +1940,7 @@ registry under the "QUIC Protocol" heading.<a href="#section-10-4" class="pilcro
 <dd class="break"></dd>
 </dl>
 </section>
+</div>
 </section>
 <div id="change-log">
 <section id="appendix-A">

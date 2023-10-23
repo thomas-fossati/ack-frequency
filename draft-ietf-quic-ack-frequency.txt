@@ -5,10 +5,10 @@
 QUIC                                                          J. Iyengar
 Internet-Draft                                                    Fastly
 Intended status: Standards Track                                I. Swett
-Expires: 12 March 2024                                            Google
+Expires: 25 April 2024                                            Google
                                                             M. Kühlewind
                                                                 Ericsson
-                                                        9 September 2023
+                                                         23 October 2023
 
 
                      QUIC Acknowledgement Frequency
@@ -44,7 +44,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 12 March 2024.
+   This Internet-Draft will expire on 25 April 2024.
 
 Copyright Notice
 
@@ -84,6 +84,8 @@ Table of Contents
      8.4.  Connection Migration
    9.  Security Considerations
    10. IANA Considerations
+     10.1.  QUIC Transport Parameter
+     10.2.  QUIC Frame Types
    11. References
      11.1.  Normative References
      11.2.  Informative References
@@ -168,7 +170,7 @@ Table of Contents
    document by sending the following transport parameter (Section 7.2 of
    [QUIC-TRANSPORT]):
 
-   min_ack_delay (0xff04de1a):  A variable-length integer representing
+   min_ack_delay (0xff04de1b):  A variable-length integer representing
       the minimum amount of time in microseconds by which the endpoint
       that is sending this value is able to delay an acknowledgement.
       This limit could be based on the receiver's clock or timer
@@ -298,7 +300,7 @@ Table of Contents
    an IMMEDIATE_ACK or if the endpoint is under heavy load.
 
    IMMEDIATE_ACK Frame {
-     Type (i) = 0xac,
+     Type (i) = 0x1f,
    }
 
 6.  Sending Acknowledgments
@@ -608,31 +610,44 @@ Table of Contents
    under https://www.iana.org/assignments/quic/quic.xhtml
    (https://www.iana.org/assignments/quic/quic.xhtml).
 
-   The following entry in Table 1 should be added to the "QUIC Transport
-   Parameters" registry under the "QUIC Protocol" heading.
+10.1.  QUIC Transport Parameter
+
+   The following entry in Table 1 has been requested to be provisionally
+   added to the "QUIC Transport Parameters" registry under the "QUIC
+   Protocol" heading.
 
              +============+=================+===============+
              | Value      | Parameter Name. | Specification |
              +============+=================+===============+
-             | 0xff04de1a | min_ack_delay   | Section 3     |
+             | 0xff04de1b | min_ack_delay   | Section 3     |
              +------------+-----------------+---------------+
 
                    Table 1: Addition to QUIC Transport
                             Parameters Entries
 
-   The following frame types should be added to the "QUIC Frame Types"
-   registry under the "QUIC Protocol" heading.
+   When this document is approved, IANA is requested to assign a
+   permanent allocation of a codepoint in the 0-63 range to replace the
+   provisional codepoint described above.
+
+10.2.  QUIC Frame Types
+
+   The following frame types have requested to be provisionally added to
+   the "QUIC Frame Types" registry under the "QUIC Protocol" heading.
 
                  +=======+===============+===============+
                  | Value | Frame Name    | Specification |
                  +=======+===============+===============+
                  | 0xaf  | ACK_FREQUENCY | Section 4     |
                  +-------+---------------+---------------+
-                 | 0xac  | IMMEDIATE_ACK | Section 5     |
+                 | 0x1f  | IMMEDIATE_ACK | Section 5     |
                  +-------+---------------+---------------+
 
                    Table 2: Addition to QUIC Frame Types
                                   Entries
+
+   When this document is approved, IANA is requested to change the
+   registration to a permanent allocation of these frame types with the
+   values described above.
 
 11.  References
 
