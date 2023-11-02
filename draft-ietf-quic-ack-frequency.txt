@@ -5,10 +5,10 @@
 QUIC                                                          J. Iyengar
 Internet-Draft                                                    Fastly
 Intended status: Standards Track                                I. Swett
-Expires: 25 April 2024                                            Google
+Expires: 5 May 2024                                               Google
                                                             M. Kühlewind
                                                                 Ericsson
-                                                         23 October 2023
+                                                         2 November 2023
 
 
                      QUIC Acknowledgement Frequency
@@ -44,7 +44,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 25 April 2024.
+   This Internet-Draft will expire on 5 May 2024.
 
 Copyright Notice
 
@@ -219,7 +219,7 @@ Table of Contents
      Sequence Number (i),
      Ack-Eliciting Threshold (i),
      Request Max Ack Delay (i),
-     Reordering Threshold (i)
+     Reordering Threshold (i),
    }
 
    Following the common frame format described in Section 12.4 of
@@ -253,7 +253,7 @@ Table of Contents
 
    Reordering Threshold:  A variable-length integer that indicates the
       maximum packet reordering before eliciting an immediate ACK, as
-      specified in {#out-of-order}. If no ACK_FREQUENCY frames have been
+      specified in Section 6.2.  If no ACK_FREQUENCY frames have been
       received, the endpoint immediately acknowledges any subsequent
       packets that are received out-of-order, as specified in
       Section 13.2 of [QUIC-TRANSPORT], corresponding to a default value
